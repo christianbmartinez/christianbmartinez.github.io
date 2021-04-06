@@ -1,0 +1,337 @@
+/* UNIVERSAL */
+
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap");
+
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  user-select: none;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  height: auto;
+}
+
+body::-webkit-scrollbar {
+  width: 0;
+}
+
+body::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+body::-webkit-scrollbar-thumb {
+  background: transparent;
+}
+
+h1 {
+  color: #fafafa;
+}
+
+/* SPLASH SCREEN */
+
+.splash {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #111;
+  position: fixed;
+  z-index: 3;
+  opacity: 1;
+}
+
+.splash h1 {
+  color: #fafafa;
+  width: auto;
+  font-size: 1.1em;
+  font-weight: 600;
+  opacity: 1;
+  position: absolute;
+}
+
+.splash .logo {
+  width: 3em;
+  height: auto;
+  margin-bottom: 1em;
+  color: #fafafa;
+  pointer-events: none;
+  position: fixed;
+  top: 45%;
+  opacity: 1;
+}
+
+/* NAV */
+
+.menu-bg {
+  position: fixed;
+  top: 37px;
+  right: 37px;
+  width: 50px;
+  height: 2px;
+  background: #fafafa;
+  z-index: 0;
+}
+
+.menu-bg p {
+  color: #fafafa;
+  width: 100%;
+  height: auto;
+  font-size: 1em;
+  margin: 0;
+  padding-top: 5px;
+  cursor: pointer;
+}
+
+nav {
+  width: 100%;
+  height: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  z-index: 2;
+  position: fixed;
+}
+
+nav .logo {
+  width: 3em;
+  height: auto;
+  position: fixed;
+  color: #fafafa;
+  cursor: pointer;
+  left: 37px;
+  top: 37px;
+  z-index: 1;
+  opacity: 0;
+}
+
+nav ul {
+  list-style: none;
+}
+
+nav ul li {
+  margin-bottom: 50px;
+}
+
+nav ul li a {
+  color: #fafafa;
+  font-size: 1.75em;
+  text-decoration: none;
+  font-weight: 500;
+  position: relative;
+  opacity: 0;
+  pointer-events: none;
+  margin-left: -37px;
+}
+
+nav ul li a:after {
+  content: "";
+  width: 100%;
+  position: absolute;
+  height: 3px;
+  border-radius: 5px;
+  background: #555;
+  bottom: -10px;
+  left: 0;
+  transform-origin: left;
+  transition: transform 0.5s ease;
+  transform: scaleX(0);
+}
+
+nav ul li a:hover:after {
+  transform: scaleX(1);
+}
+
+nav .socials {
+  display: none;
+  flex-direction: row;
+  text-align: center;
+  position: absolute;
+  bottom: 0;
+  opacity: 0;
+}
+
+nav .socials a svg {
+  width: 1.35em;
+  height: auto;
+  cursor: pointer;
+}
+
+nav .socials a {
+  color: #555;
+  margin: 1em;
+  transition: color 0.5s ease;
+}
+
+nav .socials a:hover {
+  color: #fafafa;
+}
+
+nav .close {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  top: 47px;
+  right: 37px;
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  transition: background-color .5s ease;
+}
+
+nav .close div::before,
+nav .close div::after {
+  content: "";
+  position: absolute;
+  width: 30px;
+  height: 2px;
+  background: #fafafa;
+  transition: background 0.5s ease;
+}
+nav .close div::before {
+  transform: rotate(-45deg);
+}
+
+nav .close div::after {
+  transform: rotate(45deg);
+}
+
+nav .close:hover div::before,
+nav .close:hover div::after {
+  background-color: #555;
+}
+
+/* MAIN */
+
+#christian {
+  width: 100%;
+  height: 100%;
+}
+
+.icon-container {
+  width: 100%;
+  height: auto;
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  z-index: 1;
+  bottom: 5%;
+}
+
+.scroll-icon {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 25px;
+  height: 35px;
+  border-radius: 42%;
+  background-color: transparent;
+  border: 2px solid #fafafa;
+  opacity: 1;
+}
+
+.scroll-icon .wheel {
+  width: 5px;
+  height: 5px;
+  margin-top: 7px;
+  border-radius: 50%;
+  background-color: #fafafa;
+  animation: bounce 3s;
+  animation-iteration-count: infinite;
+}
+
+.container {
+  width: 400%;
+  height: 100%;
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.section {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.section h1 {
+  text-align: center;
+}
+
+.home {
+  background-color: #cc3b73;
+}
+
+.about {
+  background-color: #2b1d69;
+}
+
+.about span.emoji {
+  display: inline-flex;
+  animation: wave 2s linear infinite;
+}
+
+.works {
+  background-color: #22ddd2;
+}
+
+.contact {
+  background-color: #8c15e9;
+}
+
+svg {
+  fill: currentColor;
+}
+
+/* KEYFRAMES */
+
+@keyframes bounce {
+  0%,
+  25%,
+  50%,
+  75%,
+  100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(10px);
+  }
+  60% {
+    transform: translateY(10px);
+  }
+}
+
+@keyframes wave {
+  0% {
+    transform: rotate(-15deg);
+  }
+  25% {
+    transform: rotate(15deg);
+  }
+  50% {
+    transform: rotate(0deg);
+  }
+  75% {
+    transform: rotate(15deg);
+  }
+  100% {
+    transform: rotate(-15deg);
+  }
+}
+
+
+  
