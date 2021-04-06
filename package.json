@@ -1,7 +1,7 @@
 {
-  "name": "three_portrait_project",
+  "name": "cbm_2021",
   "version": "1.0.0",
-  "description": "",
+  "description": "Portfolio site for Christian B. Martinez",
   "main": "./index.js",
   "dependencies": {
     "gsap": "^3.6.1",
@@ -16,7 +16,7 @@
     "dev": "webpack --mode=development ./index.js",
     "build": "webpack --mode=production ./index.js"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
+  "keywords": ["web developer", "web designer", "gsap", "threejs"],
+  "author": "Christian B. Martinez",
+  "license": "MIT"
 }
