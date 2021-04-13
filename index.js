@@ -12,10 +12,7 @@ gsap.registerPlugin(ScrollTrigger, ScrollToPlugin)
 const canvas = document.querySelector('#christian')
 
 const renderer = new THREE.WebGLRenderer({canvas})
-renderer.toneMapping = THREE.ReinhardToneMapping
-renderer.toneMappingExposure = 3
-renderer.shadowMap.enabled = true
-renderer.setPixelRatio(window.devicePixelRatio)
+renderer.outputEncoding = THREE.sRGBEncoding
 
 const fov = 1
 const aspect = 2
@@ -42,7 +39,8 @@ const onLoadFinish = gsap.timeline({
 })
 
 manager.onStart = (url, itemsLoaded, itemsTotal) => {    
-  counter.innerHTML = '0%'
+  counter.innerHTML = 'Loading...'
+  console.log( 'Started loading file: ' + url + '.\nLoaded ' + itemsLoaded + ' of ' + itemsTotal + ' files.' )
 }
 
 manager.onLoad = () => {  
@@ -51,12 +49,14 @@ manager.onLoad = () => {
   .to('nav .logo', { opacity: 1 }, '-=1.5')
   .to('.splash h1', { opacity: 0, bottom: '37px', right: '37px' }, '-=1.5')
   .to('.splash', { height: 0 }, '-=1')     
-  .to(camera.position, { duration: 2.5, z: 50 }, '-=1')  
+  .to(camera.position, { duration: 2.5, z: 60 }, '-=1')  
   .to(controls, { autoRotateSpeed: .5 }, '-=.75') 
+  console.log( 'Loading complete!');
 }    
 
 manager.onProgress = (url, loaded, total) => {    
-  counter.innerHTML = (Math.round(loaded / total * 100)) + '%'    
+  counter.innerHTML = (Math.round(loaded / total * 100)) + '%' 
+  console.log( 'Loading file: ' + url + '.\nLoaded ' + loaded + ' of ' + total + ' files.' );   
 }
     
 manager.onError = url => {    
@@ -65,26 +65,12 @@ manager.onError = url => {
     
 const gltfLoader = new GLTFLoader(manager)
 
-gltfLoader.load('./assets/06.glb', gltf => {    
-  const model = gltf.scene
-  controls.update();
-  model.traverse(o => {
-    if (o.type === 'Mesh') {
-      o.castShadow = true
-      o.receiveShadow = true
-    }
-    model.scale.set(1, 1, 1)
-    model.position.y = 0
+gltfLoader.load('./assets/06.glb', gltf => {   
+  scene.add(gltf.scene)
   })
-  scene.add(model) 
-})
 
 const light = new THREE.SpotLight(0xffa95c,4)
 light.position.set(-60,60,60)
-light.castShadow = true
-light.shadow.bias = -0.0001
-light.shadow.mapSize.width = 1024*4
-light.shadow.mapSize.height = 1024*4
 scene.add(light)
 
 const hemiLight = new THREE.HemisphereLight(0xffeeb1, 0x080820, 4)
@@ -113,7 +99,6 @@ function render() {
 }  
 
 requestAnimationFrame(render)
-controls.update()
 
 // Menu
 const open = document.querySelector('.menu-bg')

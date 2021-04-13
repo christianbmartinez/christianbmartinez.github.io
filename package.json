@@ -13,8 +13,8 @@
     "live-server": "^1.2.1"
   },
   "scripts": {
-    "dev": "webpack --mode=development ./index.js",
-    "build": "webpack --mode=production ./index.js"
+    "dev": "webpack --mode=development /index.js",
+    "build": "webpack --mode=production /index.js"
   },
   "keywords": ["web developer", "web designer", "gsap", "threejs"],
   "author": "Christian B. Martinez",
